@@ -1,19 +1,6 @@
 <?php
+include 'db_connection.php';
 session_start(); // Start the session to handle login state
-
-// Database connection
-$servername = "localhost";
-$username = "root"; // Update with your DB username
-$password = "";     // Update with your DB password
-$dbname = "finpack"; // Database name
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 $error_message = "";
 
 // Check if the form was submitted
@@ -34,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($input_password, $user['password'])) {
             // Correct credentials, set session variable
             $_SESSION['username'] = $input_username;
-            header("Location: Sidebar.html"); // Redirect to user dashboard
+            header("Location:company_select.php"); // Redirect to user dashboard
             exit();
         } else {
             // Incorrect password

@@ -1,0 +1,134 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #003366, #001a33);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Background */
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #003f5c, #001f3f, #004080);
+    animation: backgroundMove 8s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Form Container */
+.create-company-container {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 40px 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #004080;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #66b3ff;
+    border-bottom: 2px solid #66b3ff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Input Fields */
+.create-company-form input[type="text"],
+.create-company-form input[type="email"],
+.create-company-form input[type="date"],
+.create-company-form input[type="password"],
+.create-company-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #004080;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.create-company-form input:focus,
+.create-company-form textarea:focus {
+    outline: none;
+    border-color: #66b3ff;
+    box-shadow: 0 0 10px rgba(102, 179, 255, 0.6);
+}
+
+.create-company-form label {
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #bbb;
+    font-weight: bold;
+}
+
+/* Submit Button */
+.create-company-button {
+    background-color: #0066cc;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+    font-weight: bold;
+}
+
+.create-company-button:hover {
+    background-color: #005bb5;
+    transform: translateY(-3px);
+}
+
+/* Error Message */
+.error-message {
+    color: #ff4d4d;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 10px;
+    border: 1px solid #ff4d4d;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .create-company-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .create-company-button {
+        font-size: 0.9rem;
+    }
+}
