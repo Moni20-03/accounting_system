@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUES (?, ?, ?, ?, ? ,?)
         ");
         $hashed_password = password_hash($company_password, PASSWORD_BCRYPT);
-        $hashed_secret = password_hash($secret_code, PASSWORD_BCRYPT);
+        // $hashed_secret = password_hash($secret_code, PASSWORD_BCRYPT);
         $stmt->bind_param("ssssss", $company_name, $company_address, $contact_email, $contact_phone, $hashed_password,$books_begin_date);
 
         if ($stmt->execute()) {

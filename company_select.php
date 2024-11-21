@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (password_verify($entered_password, $company_password)) {
         // Store company ID in session
         $_SESSION['company_id'] = $company_id;
-        echo "<script>alert('Access Granted'); window.location.href='company_dashboard.php';</script>";
+        echo "<script>alert('Access Granted'); window.location.href='sidebar.php';</script>";
     } else {
         echo "<script>alert('Access Denied! Invalid Password');</script>";
     }
@@ -43,7 +43,7 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Company</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/company_select_style.css">
 </head>
 <body>
     <div class="company-selection-container">
@@ -51,7 +51,7 @@ $result = $stmt->get_result();
 
         <!-- Display list of companies -->
         <form action="company_select.php" method="POST">
-            <label for="company_id">Select a Company:</label>
+            <!-- <label for="company_id">Select a Company:</label> -->
             <select id="company_id" name="company_id" required>
                 <option value="">-- Select Company --</option>
                 <?php while ($row = $result->fetch_assoc()): ?>

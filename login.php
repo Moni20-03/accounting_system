@@ -34,9 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt->close();
 }
-
+if (isset($_GET['message']) && $_GET['message'] == 'loggedout'): ?>
+    <p style="color: green;">You have successfully logged out.</p>
+<?php endif; 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
