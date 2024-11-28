@@ -1,0 +1,164 @@
+/* General Reset and Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #003366; /* Blue background */
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #001f3f;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    position: fixed;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    margin: 5px 0;
+    color: #66b3ff;
+    font-size: 0.9rem;
+    font-family: 'Arial', sans-serif; /* Subtle font for sidebar info */
+}
+
+hr {
+    border: 1px solid #005580;
+    margin: 15px 0;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 10px;
+}
+
+.menu a {
+    display: block;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    background-color: #004080;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Verdana', sans-serif; /* Stylish font for menu */
+}
+
+.menu a:hover {
+    background-color: #005bb5;
+    transform: translateX(5px);
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Reusable Container */
+.container {
+    color: #fff; /* White text color to contrast the blue background */
+    padding: 20px;
+    border-radius: 10px; /* Smooth rounded edges */
+    text-align: center;
+    width: 40%; /* Adjusted size for laptops */
+    max-width: 500px;
+    display: flex;
+    flex-direction: column; /* Ensure vertical alignment */
+    gap: 15px; /* Spacing between buttons or elements */
+    border: 2px solid #66b3ff; /* Add a blue-themed border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth animations */
+    font-family: 'Helvetica', sans-serif; /* Clean font for main container */
+}
+
+.container:hover {
+    transform: scale(1.05); /* Slightly enlarge the container on hover */
+    box-shadow: 0px 4px 15px rgba(102, 179, 255, 0.5); /* Add glowing effect */
+}
+
+/* Heading Styling */
+h2, h3 {
+    font-family: 'Georgia', serif; /* Elegant font for headings */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #66b3ff; /* Differentiated color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons */
+button {
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    padding: 20px 20px;
+    margin: 0 auto; /* Center the buttons horizontally */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.3s; /* Add smooth hover animation */
+    width: 80%; /* Proportionate size for buttons */
+    max-width: 250px; /* Limit button width */
+    font-family: 'Roboto', sans-serif; /* Modern font for buttons */
+    font-weight: 500; /* Add slight boldness for emphasis */
+    letter-spacing: 0.5px; /* Slight spacing for better readability */
+}
+
+button:hover {
+    background-color: #005bb5; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        width: 60%; /* Slightly larger for tablets */
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+        padding: 10px;
+    }
+
+    .container {
+        width: 80%; /* Full width for smaller screens */
+        padding: 15px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

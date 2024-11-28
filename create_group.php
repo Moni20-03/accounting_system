@@ -9,7 +9,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['company_id'])) {
 include('db_connection.php');
 $company_id = $_SESSION['company_id'];
 $username = $_SESSION['username'];
-$group_id = $_SESSION['group_id'];
+// $group_id = $_SESSION['group_id'];
 
 $stmt = $conn->prepare("SELECT company_name FROM company_details WHERE company_id = ?");
 $stmt->bind_param("i", $company_id);
@@ -23,7 +23,8 @@ $sql = "SELECT group_id, group_name FROM Groups WHERE group_type = 'Primary'";
 $result = $conn->query($sql);
 
 $primary_groups = [];
-if ($result->num_rows > 0) {
+if ($result->num_rows > 0) 
+{
     while ($row = $result->fetch_assoc()) {
         $primary_groups[] = $row;
     }
@@ -74,203 +75,12 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Group - FINPACK</title>
-    <!-- <link rel="stylesheet" href="style.css"> Make sure this is the correct path for your global styles -->
-    <style>
-        /* Reset and General Styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Main Container */
-        .container-wrapper {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            background-color: #003366;
-            width: 250px;
-            height: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            left: 0;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-            z-index: 100;
-        }
-
-        .user-info {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .user-info p {
-            margin: 5px 0;
-            color: #66b3ff;
-            font-size: 0.9rem;
-        }
-
-        hr {
-            border: 1px solid #005580;
-            margin: 15px 0;
-        }
-
-        /* Menu Styling */
-        .menu {
-            list-style: none;
-            padding: 0;
-        }
-
-        .menu li {
-            margin-bottom: 10px;
-        }
-
-        .menu a {
-            display: block;
-            padding: 12px 15px;
-            font-size: 1rem;
-            color: #fff;
-            text-decoration: none;
-            background-color: #004080;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .menu a:hover {
-            background-color: #005bb5;
-            transform: translateX(5px);
-        }
-
-        /* Main Content Styling */
-        .main-content {
-            margin-left: 250px;
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        /* Centered Form Container */
-        .form-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h2 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .error-message, .success-message {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .error-message {
-            background-color: #ffcccc;
-            color: #d9534f;
-        }
-
-        .success-message {
-            background-color: #d4edda;
-            color: #28a745;
-        }
-
-        label {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            text-align: left;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            margin-top: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 200px;
-                padding: 15px;
-            }
-
-            .menu a {
-                font-size: 0.9rem;
-            }
-
-            .main-content {
-                margin-left: 200px;
-            }
-
-            .form-container {
-                padding: 15px;
-                width: 90%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/create-group.css"> 
+        
 </head>
 <body>
-
-    <!-- Wrapper for Sidebar and Main Content -->
-    <div class="container-wrapper">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="user-info">
-                <p><strong>User:</strong> <?= htmlspecialchars($username); ?></p>
-                <p><strong>Company:</strong> <?= htmlspecialchars($company_name); ?></p>
-            </div>
-            <hr>
-            <ul class="menu">
-                <li><a href="account-info.php">Account Info</a></li>
-                <li><a href="sales.php">Accounting Vouchers</a></li>
-                <li><a href="reports.php">Reports</a></li>
-                <li><a href="display.php">Display</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </div>
-
+    
+    <?php include 'sidebar.php'; ?> <!-- Include Sidebar -->
         <!-- Main Content -->
         <div class="main-content">
             <!-- Form to Create Group -->

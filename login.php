@@ -199,8 +199,8 @@ h2 {
         <label for="password">Password</label>
     </div>
     <div class="form-links">
-        <a href="#" class="forgot-password">Forgot Password?</a>
-        <a href="register.php" class="register-link">New User? Register</a>
+     <!-- <a href="#" class="forgot-password">Forgot Password?</a> -->
+     <a href="register.php" class="register-link">New User? Register</a>
     </div>
     <button type="submit" class="login-button">Login</button>
 </form>

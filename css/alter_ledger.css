@@ -1,0 +1,218 @@
+/* General Reset and Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #003366;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #005bb5;
+}
+
+/* Main Content Styling */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* Table Styling for Ledgers */
+.table-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+}
+
+table th {
+    background-color: #003366;  /* Dark blue header background */
+    color: white;               /* White text */
+    font-size: 1.1rem;
+}
+
+table tr:hover {
+    background-color: #f4f4f4;  /* Light grey background on hover */
+}
+
+table a {
+    color: #007bff;             /* Blue link color */
+    text-decoration: none;
+    font-weight: bold;          /* Make links bold */
+}
+
+table a:hover {
+    text-decoration: underline; /* Underline link on hover */
+}
+
+/* Form Styling for Edit Ledger */
+.form-container {
+    background-color: #ffffff;
+    padding: 40px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%; /* Increase the width of the form */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 1.8rem; /* Increase the font size of the heading */
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 15px;  /* Increased top margin */
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.1rem; /* Increased font size for labels */
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 12px; /* Increased padding for better spacing */
+    margin-top: 8px;  /* Slightly reduced top margin */
+    margin-bottom: 20px;  /* Increased bottom margin */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1rem; /* Increased font size */
+}
+
+.form-container input[type="number"] 
+{
+    width: auto;
+    display: inline-block;
+}
+
+.radio-buttons {
+    display: flex;
+    gap: 20px; /* Add space between the radio buttons */
+    justify-content: center; /* Center the radio buttons horizontally */
+    margin-bottom: 15px; /* Margin below the radio buttons */
+}
+
+.radio-buttons label {
+    font-size: 1.1rem; /* Slightly larger font size for the labels */
+    color: #003366; /* Color of the label text */
+    display: flex;
+    align-items: center; /* Align the radio button and text vertically */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.radio-buttons input[type="radio"] {
+    margin-right: 8px; /* Space between the radio button and the text */
+    transform: scale(1.2); /* Slightly enlarge the radio button for better visibility */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Optional: Focus Effect on Radio Button */
+.radio-buttons input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 51, 102, 0.6); /* Blue outline when the radio button is focused */
+}
+
+
+.form-container button {
+    display: block;
+    width: 100%;
+    padding: 15px; /* Increased button padding */
+    background-color: #003366;
+    color: white;
+    font-size: 1.2rem; /* Increased font size for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.form-container button:hover {
+    background-color: #00509e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;  /* Decrease form width for smaller screens */
+        padding: 20px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .form-container input,
+    .form-container select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .form-container button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}

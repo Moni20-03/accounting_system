@@ -1,0 +1,123 @@
+/* Reset and General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #003366;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    margin: 5px 0;
+    color: #66b3ff;
+    font-size: 0.9rem;
+}
+
+hr {
+    border: 1px solid #005580;
+    margin: 15px 0;
+}
+
+/* Main Content Styling */
+.main-content {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Form Container */
+.form-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #333;
+}
+
+/* Heading */
+h2 {
+    color: #003366;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* Table Styling */
+.ledger-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ledger-table th, .ledger-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.ledger-table th {
+    background-color: #003366;
+    color: white;
+}
+
+.ledger-table tr:hover {
+    background-color: #f4f4f4;
+}
+
+.ledger-table a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.ledger-table a:hover {
+    text-decoration: underline;
+}
+
+/* Ledger Details */
+.ledger-details {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.ledger-details p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.ledger-details strong {
+    color: #003366;
+}
