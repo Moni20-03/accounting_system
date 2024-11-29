@@ -23,8 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $contact_email = trim($_POST['contact_email']);
     $contact_phone = trim($_POST['contact_phone']);
     $company_password = trim($_POST['company_password']);
-    $books_begin_date = $_POST['books_begin_date'];
-
+    
     $errors = [];
 
     // Validate inputs
@@ -44,21 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Invalid phone number format.";
     }
 
-    // Validate books begin date
-    if (!empty($books_begin_date)) {
-        $date_parts = explode('-', $books_begin_date);
-        if (count($date_parts) !== 3 || !checkdate($date_parts[1], $date_parts[2], $date_parts[0])) {
-            $errors[] = "Invalid date format for Books Beginning From Date.";
-        } else {
-            $current_year = date("Y");
-            $year = (int)$date_parts[0];
-            if ($year < 1900 || $year > $current_year + 10) { // Allow years only from 1900 to 10 years in the future
-                $errors[] = "Books Beginning From Date year must be between 1900 and " . ($current_year + 10) . ".";
-            }
-        }
-    } else {
-        $errors[] = "Books Beginning From Date is required.";
-    }
 
     // Check for duplicate company name
     if (empty($errors)) {
@@ -76,13 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // If no errors, insert into the database
     if (empty($errors)) {
+        if (!isset($_SESSION['id'])) {
+            die("Error: User session not found.");
+        }
+
+        $id = $_SESSION['id']; // Get the user ID from the session
         $stmt = $conn->prepare("
-            INSERT INTO company_details (company_name, company_address, contact_email, contact_phone, company_password, books_begin_date)
-            VALUES (?, ?, ?, ?, ? ,?)
+            INSERT INTO company_details (id, company_name, company_address, contact_email, contact_phone, company_password)
+            VALUES (?, ?, ?, ?, ?, ?)
         ");
         $hashed_password = password_hash($company_password, PASSWORD_BCRYPT);
-        // $hashed_secret = password_hash($secret_code, PASSWORD_BCRYPT);
-        $stmt->bind_param("ssssss", $company_name, $company_address, $contact_email, $contact_phone, $hashed_password,$books_begin_date);
+        $stmt->bind_param("ssssss", $id, $company_name, $company_address, $contact_email, $contact_phone, $hashed_password);
 
         if ($stmt->execute()) {
             // Clear session data after successful submission
@@ -98,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -137,9 +126,6 @@ $conn->close();
 
             <label for="company_password">Password:</label>
             <input type="password" id="company_password" name="company_password" required>
-
-            <label for="books_begin_date">Books Beginning From Date:</label>
-            <input type="date" id="books_begin_date" name="books_begin_date" value="<?= htmlspecialchars($_SESSION['form_data']['books_begin_date'] ?? ''); ?>" required>
 
             <button type="submit" class="create-company-button">Submit</button>
         </form>

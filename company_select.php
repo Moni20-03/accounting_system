@@ -9,6 +9,8 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+$id = $_SESSION['id'];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $company_id = $_POST['company_id'];
     $entered_password = $_POST['company_password'];  // Use the correct input name for password

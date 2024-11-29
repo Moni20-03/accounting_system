@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $input_password = $_POST['password'];
 
     // Check for user credentials from the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $input_username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         // Verify password
         if (password_verify($input_password, $user['password'])) {
-            // Correct credentials, set session variable
-            $_SESSION['username'] = $input_username;
-            header("Location:company_select.php"); // Redirect to user dashboard
+            // Correct credentials, set session variables
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['id'] = $user['id']; // Store the user ID in the session
+            header("Location: company_select.php"); // Redirect to user dashboard
             exit();
         } else {
             // Incorrect password
@@ -34,9 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt->close();
 }
+
 if (isset($_GET['message']) && $_GET['message'] == 'loggedout'): ?>
     <p style="color: green;">You have successfully logged out.</p>
-<?php endif; 
+<?php endif;
+
 $conn->close();
 ?>
 
